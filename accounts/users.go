@@ -16,7 +16,13 @@ type Names struct {
 	FirstName, MiddleName, LastName string
 }
 
-// func (user *User)
+// AddDetails methods adds the details to the user
+func (user *User) AddDetails(firstName, lastName string, age uint) {
+	user.Name.FirstName = firstName
+	user.Name.LastName = lastName
+	user.Age = age
+	user.Acc.Number = accNumber()
+}
 
 // NewUser to create a new User
 func NewUser(firstName, lastName string, age uint, balance float64) (user *User, err error) {
@@ -26,8 +32,7 @@ func NewUser(firstName, lastName string, age uint, balance float64) (user *User,
 		err = errors.New("invalid age, should be 18 years or older")
 		return
 	}
-	user.Name.FirstName, user.Name.LastName = firstName, lastName
-	user.Age, user.Acc.Number = age, accNumber()
+	user.AddDetails(firstName, lastName, age)
 
 	if balance >= 0 {
 		user.Acc.Balance = balance
