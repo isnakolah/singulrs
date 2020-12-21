@@ -12,15 +12,11 @@ type Names struct {
 	FirstName, MiddleName, LastName string
 }
 
-func (user *User) construct(firstName, lastName string, age, accNumber int, balance float64) {
-	user.Name.FirstName, user.Name.LastName = firstName, lastName
-	user.Age = age
-	user.Acc.Balance, user.Acc.Number = balance, accNumber
-}
-
 // New to create a new User
 func New(firstName, lastName string, age, accNumber int, balance float64) *User {
 	user := &User{}
-	user.construct(firstName, lastName, age, accNumber, balance)
+	user.Name.FirstName, user.Name.LastName = firstName, lastName
+	user.Age = age
+	user.Acc.Balance, user.Acc.Number = balance, accNumber
 	return user
 }
