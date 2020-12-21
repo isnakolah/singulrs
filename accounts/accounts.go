@@ -4,7 +4,7 @@ import "fmt"
 
 // Accounts struct shows the blueprint of Accounts
 type Accounts struct {
-	Number  int
+	Number  uint
 	Balance float64
 }
 

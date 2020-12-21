@@ -7,7 +7,7 @@ import (
 // User is the blueprint of the user
 type User struct {
 	Name Names
-	Age  int
+	Age  uint
 	Acc  Accounts
 }
 
@@ -17,7 +17,7 @@ type Names struct {
 }
 
 // New to create a new User
-func New(firstName, lastName string, age, accNumber int, balance float64) *User {
+func New(firstName, lastName string, age uint, accNumber uint, balance float64) *User {
 	if age < 18 {
 		fmt.Println("You cannot create an account when you are underage")
 		return &User{}
@@ -29,6 +29,7 @@ func New(firstName, lastName string, age, accNumber int, balance float64) *User 
 	if balance >= 0 {
 		user.Acc.Balance = balance
 	} else {
+		fmt.Println("Input a valid account balance. Must be greater than Ksh 0")
 		user.Acc.Balance = 0
 	}
 	return user
