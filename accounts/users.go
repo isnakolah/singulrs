@@ -19,7 +19,7 @@ type Names struct {
 // NewUser to create a new User
 func NewUser(firstName, lastName string, age uint, balance float64) (*User, error) {
 	if age < 18 {
-		err := errors.New("invalid age, under 18 years")
+		err := errors.New("invalid age, should be 18 years or older")
 		return &User{}, err
 	}
 	user := &User{}
