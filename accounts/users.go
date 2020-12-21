@@ -17,3 +17,8 @@ func (user *User) construct(firstName, lastName string, age, accNumber int, bala
 	user.Age = age
 	user.Acc.Balance, user.Acc.Number = balance, accNumber
 }
+
+// New to create a new User
+func New() *User {
+	return &User{}
+}

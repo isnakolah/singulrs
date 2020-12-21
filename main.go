@@ -1,10 +1,11 @@
 package main
 
 import (
+	"bankGolang/accounts"
 	"fmt"
 )
 
 func main() {
-	daniel := new(User)
+	daniel := accounts.New()
 	fmt.Println(daniel)
 }
