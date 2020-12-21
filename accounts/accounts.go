@@ -1,6 +1,8 @@
 package accounts
 
-import "fmt"
+import (
+	"errors"
+)
 
 // Accounts struct shows the blueprint of Accounts
 type Accounts struct {
@@ -14,10 +16,11 @@ func (user *User) Deposit(amount float64) {
 }
 
 // Withdraw remove from the account balance
-func (user *User) Withdraw(amount float64) {
+func (user *User) Withdraw(amount float64) error {
 	if user.Acc.Balance-amount < 0 {
-		fmt.Println("Cannot withdraw more than your account balance")
-	} else {
-		user.Acc.Balance -= amount
+		err := errors.New("invalid withdrawal, cannot withdraw amount greater than account balance")
+		return err
 	}
+	user.Acc.Balance -= amount
+	return nil
 }
