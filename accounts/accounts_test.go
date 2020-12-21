@@ -2,7 +2,7 @@ package accounts
 
 import "testing"
 
-func TestNewUserUser(t *testing.T) {
+func TestNewUser(t *testing.T) {
 	jane, err := NewUser("Jane", "Doe", 18, -1234)
 
 	if err == nil && jane.Acc.Balance != 0 {
