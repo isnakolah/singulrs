@@ -8,4 +8,8 @@ func TestNewItem(t *testing.T) {
 	if sugar.Name != "Sugar" {
 		t.Errorf("New item not captured")
 	}
+
+	if len(sugar.Brands) != 2 {
+		t.Errorf("Brands not added")
+	}
 }
