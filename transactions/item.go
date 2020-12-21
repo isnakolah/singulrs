@@ -1,5 +1,9 @@
 package transactions
 
+import (
+	"fmt"
+)
+
 // Item struct for the item type
 type Item struct {
 	Name   string
@@ -12,7 +16,13 @@ type Brand struct {
 	Price float64
 }
 
-// New method to add a new Item
-func (item Item) New(name string, brands map[string]int) Item {
+// NewItem method to add a new Item
+func NewItem(name string, brands map[string]int) *Item {
+	item := &Item{}
+	item.Name = name
 
+	for name, price := range brands {
+		fmt.Println(name, price)
+	}
+	return item
 }
