@@ -1,7 +1,7 @@
 package accounts
 
 import (
-	"fmt"
+	"errors"
 )
 
 // User is the blueprint of the user
@@ -17,10 +17,10 @@ type Names struct {
 }
 
 // New to create a new User
-func New(firstName, lastName string, age uint, accNumber uint, balance float64) *User {
+func New(firstName, lastName string, age uint, accNumber uint, balance float64) (*User, error) {
 	if age < 18 {
-		fmt.Println("You cannot create an account when you are underage")
-		return &User{}
+		err := errors.New("invalid age, under 18 years")
+		return &User{}, err
 	}
 	user := &User{}
 	user.Name.FirstName, user.Name.LastName = firstName, lastName
@@ -29,8 +29,9 @@ func New(firstName, lastName string, age uint, accNumber uint, balance float64) 
 	if balance >= 0 {
 		user.Acc.Balance = balance
 	} else {
-		fmt.Println("Input a valid account balance. Must be greater than Ksh 0")
+		err := errors.New("invalid account balance, should be greater than 0")
 		user.Acc.Balance = 0
+		return user, err
 	}
-	return user
+	return user, nil
 }
