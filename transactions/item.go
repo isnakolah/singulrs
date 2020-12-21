@@ -2,9 +2,9 @@ package transactions
 
 // Item struct for the item type
 type Item struct {
-	Name   string
-	Brands []Brand
-	Unit   string
+	Name    string
+	Brands  []Brand
+	Measure string
 }
 
 // Brand struct for the brand types
@@ -24,7 +24,7 @@ func (item *Item) AddBrand(brands map[string]float64) {
 func NewItem(name string, brands map[string]float64, unit string) *Item {
 	item := &Item{}
 	item.Name = name
-	item.Unit = unit
+	item.Measure = unit
 	item.AddBrand(brands)
 
 	return item
