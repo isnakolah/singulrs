@@ -16,22 +16,24 @@ type Names struct {
 	FirstName, MiddleName, LastName string
 }
 
+// func (user *User)
+
 // NewUser to create a new User
-func NewUser(firstName, lastName string, age uint, balance float64) (*User, error) {
+func NewUser(firstName, lastName string, age uint, balance float64) (user *User, err error) {
+	user, err = &User{}, nil
+
 	if age < 18 {
-		err := errors.New("invalid age, should be 18 years or older")
-		return &User{}, err
+		err = errors.New("invalid age, should be 18 years or older")
+		return
 	}
-	user := &User{}
 	user.Name.FirstName, user.Name.LastName = firstName, lastName
 	user.Age, user.Acc.Number = age, accNumber()
 
 	if balance >= 0 {
 		user.Acc.Balance = balance
 	} else {
-		err := errors.New("invalid account balance, should be greater than 0")
+		err = errors.New("invalid account balance, should be greater than 0")
 		user.Acc.Balance = 0
-		return user, err
 	}
-	return user, nil
+	return
 }
