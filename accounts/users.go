@@ -17,14 +17,14 @@ type Names struct {
 }
 
 // New to create a new User
-func New(firstName, lastName string, age, accNumber uint, balance float64) (*User, error) {
+func New(firstName, lastName string, age uint, balance float64) (*User, error) {
 	if age < 18 {
 		err := errors.New("invalid age, under 18 years")
 		return &User{}, err
 	}
 	user := &User{}
 	user.Name.FirstName, user.Name.LastName = firstName, lastName
-	user.Age, user.Acc.Number = age, accNumber
+	user.Age, user.Acc.Number = age, accNumber()
 
 	if balance >= 0 {
 		user.Acc.Balance = balance

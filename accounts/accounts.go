@@ -2,11 +2,12 @@ package accounts
 
 import (
 	"errors"
+	"math/rand"
 )
 
 // Accounts struct shows the blueprint of Accounts
 type Accounts struct {
-	Number  uint
+	Number  int
 	Balance float64
 }
 
@@ -23,4 +24,9 @@ func (user *User) Withdraw(amount float64) error {
 	}
 	user.Acc.Balance -= amount
 	return nil
+}
+
+func accNumber() (accNumber int) {
+	accNumber = rand.Int()
+	return
 }
