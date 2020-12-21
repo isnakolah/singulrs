@@ -1,5 +1,9 @@
 package accounts
 
+import (
+	"fmt"
+)
+
 // User is the blueprint of the user
 type User struct {
 	Name Names
@@ -14,9 +18,18 @@ type Names struct {
 
 // New to create a new User
 func New(firstName, lastName string, age, accNumber int, balance float64) *User {
+	if age < 18 {
+		fmt.Println("You cannot create an account when you are underage")
+		return &User{}
+	}
 	user := &User{}
 	user.Name.FirstName, user.Name.LastName = firstName, lastName
-	user.Acc.Balance, user.Age, user.Acc.Number = balance, age, accNumber
+	user.Age, user.Acc.Number = age, accNumber
 
+	if balance >= 0 {
+		user.Acc.Balance = balance
+	} else {
+		user.Acc.Balance = 0
+	}
 	return user
 }
