@@ -19,6 +19,8 @@ func (user *User) construct(firstName, lastName string, age, accNumber int, bala
 }
 
 // New to create a new User
-func New() *User {
-	return &User{}
+func New(firstName, lastName string, age, accNumber int, balance float64) *User {
+	user := &User{}
+	user.construct(firstName, lastName, age, accNumber, balance)
+	return user
 }

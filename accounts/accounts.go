@@ -8,11 +8,13 @@ type Accounts struct {
 	Balance float64
 }
 
-func (user *User) deposit(amount float64) {
+// Deposit adds to the account balance
+func (user *User) Deposit(amount float64) {
 	user.Acc.Balance += amount
 }
 
-func (user *User) withdraw(amount float64) {
+// Withdraw remove from the account balance
+func (user *User) Withdraw(amount float64) {
 	if user.Acc.Balance-amount < 0 {
 		fmt.Println("Cannot withdraw more than your account balance")
 	} else {
