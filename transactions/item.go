@@ -4,6 +4,7 @@ package transactions
 type Item struct {
 	Name   string
 	Brands []Brand
+	Unit   string
 }
 
 // Brand struct for the brand types
@@ -20,9 +21,10 @@ func (item *Item) AddBrand(brands map[string]float64) {
 }
 
 // NewItem function creates a new item
-func NewItem(name string, brands map[string]float64) *Item {
+func NewItem(name string, brands map[string]float64, unit string) *Item {
 	item := &Item{}
 	item.Name = name
+	item.Unit = unit
 	item.AddBrand(brands)
 
 	return item
