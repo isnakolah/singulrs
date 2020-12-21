@@ -6,9 +6,8 @@ import (
 )
 
 func main() {
-	daniel, err := accounts.New("Daniel", "Nakolah", 20, 2, -3000)
-	daniel.Deposit(4000)
-	daniel.Withdraw(8000)
-	fmt.Println(daniel.Acc.Balance)
+	daniel, err := accounts.New("Daniel", "Nakolah", 20, 2, 100)
+
 	fmt.Println(err)
+	fmt.Println(daniel.Acc.Balance)
 }
