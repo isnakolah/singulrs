@@ -49,7 +49,7 @@ func TestDeposit(t *testing.T) {
 	// Test for a valid deposit
 	jane, err := NewUser("Jane", "Doe", 18, 1000)
 
-	jane.Deposit(100)
+	jane.Deposit(1000)
 
 	if jane.Acc.Balance != 2000 {
 		t.Error(
