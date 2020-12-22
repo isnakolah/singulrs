@@ -14,7 +14,6 @@ func TestNewUser(t *testing.T) {
 			"got", daniel.Acc.Balance, "\n\t\t",
 			"-> Error:", err,
 		)
-		t.Errorf("A valid input not successfully created")
 	}
 
 	// Test for an invalid account balance
