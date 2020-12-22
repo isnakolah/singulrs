@@ -10,13 +10,12 @@ type Transaction struct {
 // NewTransaction function creates new transaction
 func NewTransaction(item *Item, itemBrand map[string]float64, amount uint) (transaction *Transaction) {
 	transaction = &Transaction{}
-
 	transaction.Item = item
 	transaction.Amount = amount
 	transaction.ItemBrand = itemBrand
 
 	var brandName string
-	for name, _ := range itemBrand {
+	for name := range itemBrand {
 		brandName = name
 	}
 	findBrand := func() (available bool) {
