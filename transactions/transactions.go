@@ -15,19 +15,22 @@ func NewTransaction(item *Item, itemBrand map[string]float64, amount uint) (tran
 	transaction.Amount = amount
 	transaction.ItemBrand = itemBrand
 
-	// findBrand := func() (brandName string, brandPrice float64) {
-	// 	for _, element := range transaction.Item.Brands {
-	// 		if element.Name == transaction.ItemBrand.Name {
-	// 			brandName = element.Name
-	// 			brandPrice = element.Price
-	// 		}
-	// 	}
-	// 	return
-	// }
-	// name, _ := findBrand()
-	// if name == "" {
-	// 	transaction.Item.AddBrand(map[string]float64{transaction.ItemBrand.Name: transaction.ItemBrand.Price})
-	// }
+	var brandName string
+	for name, _ := range itemBrand {
+		brandName = name
+	}
+	findBrand := func() (available bool) {
+		available = false
+		for _, item := range transaction.Item.Brands {
+			if _, ok := item[brandName]; ok {
+				available = true
+			}
+		}
+		return
+	}
+	if !findBrand() {
+		transaction.Item.AddBrand(itemBrand)
+	}
 
 	return
 }
