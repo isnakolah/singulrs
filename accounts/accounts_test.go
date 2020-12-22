@@ -2,21 +2,18 @@ package accounts
 
 import "testing"
 
-// func TestError(message , name, expected, got string) (err func) {
-//     err := t.Error(
-//         "-> Valid withdrawal not successful\n\t\t",
-//         "-> For", john.Name.FirstName, "account",
-//         "expected", 500,
-//         "got", john.Acc.Balance,
-//     )
-//     return
-// }
-
 func TestNewUser(t *testing.T) {
 	// Test for a valid input
 	daniel, err := NewUser("Daniel", "Nakolah", 20, 1000)
 
 	if err != nil && daniel.Name.FirstName != "Daniel" {
+		t.Error(
+			"-> Vaid deposit not successful\n\t\t",
+			"-> For", daniel.Acc.Balance,
+			"expected", 1000,
+			"got", daniel.Acc.Balance, "\n\t\t",
+			"-> Error:", err,
+		)
 		t.Errorf("A valid input not successfully created")
 	}
 
@@ -24,26 +21,44 @@ func TestNewUser(t *testing.T) {
 	jane, err := NewUser("Jane", "Doe", 18, -1234)
 
 	if err == nil && jane.Acc.Balance != 0 {
-		t.Errorf("Error not raised for depositing a negative value")
+		t.Error(
+			"-> Invalid deposit, error not raised\n\t\t",
+			"-> For", jane.Acc.Balance,
+			"expected", 0,
+			"got", jane.Acc.Balance, "\n\t\t",
+			"-> Error:", err,
+		)
 	}
 
 	// Test for an invalid age
 	john, err := NewUser("John", "Doe", 17, 1000)
 
 	if err == nil && john.Name.FirstName != "" {
-		t.Errorf("Error not raised for younger age than 18")
+		t.Error(
+			"-> Invalid age, error not raised\n\t\t",
+			"-> For", john.Age,
+			"expected", 0,
+			"got", john.Age, "\n\t\t",
+			"-> Error:", err,
+		)
 	}
 
 }
 
 func TestDeposit(t *testing.T) {
 	// Test for a valid deposit
-	jane, _ := NewUser("Jane", "Doe", 18, 1000)
+	jane, err := NewUser("Jane", "Doe", 18, 1000)
 
-	jane.Deposit(1000)
+	jane.Deposit(100)
 
 	if jane.Acc.Balance != 2000 {
-		t.Errorf("Amount not successfully deposited")
+		t.Error(
+			"-> Valid deposit not successful\n\t\t",
+			"-> For", jane.Name.FirstName, "account",
+			"expected", 2000,
+			"got", jane.Acc.Balance, "\n\t\t",
+			"-> Error:", err,
+		)
 	}
 }
 
@@ -67,7 +82,13 @@ func TestWithdraw(t *testing.T) {
 	jane.Withdraw(2000)
 
 	if jane.Acc.Balance != 1000 && err == nil {
-		t.Errorf("Error not raised for withdrawal of more than the available in the account")
+		t.Error(
+			"-> Invalid withdrawal, error not raised\n\t\t",
+			"-> For", jane.Name.FirstName, "account",
+			"expected", 1000,
+			"got", john.Acc.Balance, "\n\t\t",
+			"-> Error:", err,
+		)
 	}
 
 }
