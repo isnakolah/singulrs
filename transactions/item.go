@@ -3,20 +3,20 @@ package transactions
 // Item struct for the item type
 type Item struct {
 	Name    string
-	Brands  []Brand
+	Brands  []map[string]float64
 	Measure string
 }
 
 // Brand struct for the brand types
-type Brand struct {
-	Name  string
-	Price float64
-}
+// type Brand struct {
+// 	Name  string
+// 	Price float64
+// }
 
 // AddBrand is a method that adds a brand to an item
 func (item *Item) AddBrand(brands map[string]float64) {
 	for name, price := range brands {
-		item.Brands = append(item.Brands, Brand{name, price})
+		item.Brands = append(item.Brands, map[string]float64{name: price})
 	}
 }
 
