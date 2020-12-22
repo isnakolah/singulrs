@@ -21,7 +21,7 @@ func (user *User) AddDetails(firstName, lastName string, age uint) {
 	user.Name.FirstName = firstName
 	user.Name.LastName = lastName
 	user.Age = age
-	user.Acc.Number = accNumber()
+	user.Acc.Number = AccNumber()
 }
 
 // NewUser to create a new User

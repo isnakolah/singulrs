@@ -16,7 +16,8 @@ func (user *User) Deposit(amount float64) {
 	user.Acc.Balance += amount
 }
 
-// Withdraw remove from the account balance
+// Withdraw function deducts from your account
+// Only when the balance is more than the value to be withdrawn
 func (user *User) Withdraw(amount float64) error {
 	if user.Acc.Balance-amount < 0 {
 		err := errors.New("invalid withdrawal, cannot withdraw amount greater than account balance")
@@ -26,7 +27,8 @@ func (user *User) Withdraw(amount float64) error {
 	return nil
 }
 
-func accNumber() (accNumber int) {
+// AccNumber function creates a random number as the account number
+func AccNumber() (accNumber int) {
 	accNumber = rand.Int()
 	return
 }
