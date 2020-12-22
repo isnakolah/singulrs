@@ -2,6 +2,16 @@ package accounts
 
 import "testing"
 
+// func TestError(message , name, expected, got string) (err func) {
+//     err := t.Error(
+//         "-> Valid withdrawal not successful\n\t\t",
+//         "-> For", john.Name.FirstName, "account",
+//         "expected", 500,
+//         "got", john.Acc.Balance,
+//     )
+//     return
+// }
+
 func TestNewUser(t *testing.T) {
 	// Test for a valid input
 	daniel, err := NewUser("Daniel", "Nakolah", 20, 1000)
