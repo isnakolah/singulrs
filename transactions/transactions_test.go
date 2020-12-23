@@ -39,7 +39,7 @@ func TestAddValidBrand(t *testing.T) {
 func TestNewValidTransaction(t *testing.T) {
 	// Test for adding a valid transaction
 	sugar := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
-	firstPurchase := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 3)
+	firstPurchase, _, _ := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 3)
 
 	if firstPurchase.Amount != 3 {
 		t.Errorf(utils.ErrorMessage(
@@ -56,7 +56,7 @@ func TestNewValidTransaction(t *testing.T) {
 	}
 
 	// Test for adding a purchase with a new brand
-	secondPurchase := NewTransaction(sugar, map[string]float64{"Nzoia": 200}, 1)
+	secondPurchase, _, _ := NewTransaction(sugar, map[string]float64{"Nzoia": 200}, 1)
 
 	if len(sugar.Brands) != 3 || len(secondPurchase.Item.Brands) != 3 {
 		t.Errorf(utils.ErrorMessage(
@@ -68,7 +68,7 @@ func TestNewValidTransaction(t *testing.T) {
 func TestNewInvalidTransaction(t *testing.T) {
 	// Test for an invalid transaction where the amount is 0
 	sugar := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
-	firstPurchase := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 0)
+	firstPurchase, _, _ := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 0)
 
 	if firstPurchase != nil {
 		t.Errorf("Invalid purchase not caught, error not raised")
