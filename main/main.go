@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bankGolang/httpd/handler"
+	"bankGolang/main/handler"
 
 	"github.com/gin-gonic/gin"
 )
