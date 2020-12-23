@@ -9,14 +9,14 @@ import (
 
 // Item struct for the item type
 type Item struct {
-	Name    string
-	Brands  []map[string]float64
-	Measure string
+	Name    string               `json:"name"`
+	Brands  []map[string]float64 `json:"brands"`
+	Measure string               `json:"measure"`
 }
 
 // Message struct for the messages
 type Message struct {
-	Value string
+	Value string `json:"value"`
 }
 
 // #TODO RemoveBrand()
