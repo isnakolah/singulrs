@@ -1,8 +1,8 @@
 package transactions
 
 import (
+	"bankGolang/utils"
 	"errors"
-	"strings"
 )
 
 // #TODO remove the item list of brands, to be just a map
@@ -32,11 +32,11 @@ func (item *Item) AddBrand(brands map[string]float64) {
 
 // NewItem function creates a new item
 func NewItem(name string, brands map[string]float64, unit string) (item *Item, err error) {
-	if strings.TrimSpace(name) != "" {
+	if utils.CheckString(name) {
 		item = &Item{}
 		item.Name = name
 		item.AddBrand(brands)
-		if strings.TrimSpace(unit) != "" {
+		if utils.CheckString(unit) {
 			item.Measure = unit
 			return
 		}
