@@ -7,6 +7,8 @@ type Item struct {
 	Measure string
 }
 
+// #TODO RemoveBrand
+
 // AddBrand is a method that adds a brand to an item
 func (item *Item) AddBrand(brands map[string]float64) {
 	for name, price := range brands {

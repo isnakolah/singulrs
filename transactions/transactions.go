@@ -7,6 +7,8 @@ type Transaction struct {
 	Amount    uint
 }
 
+// #TODO Get item to be used in transaction
+
 // NewTransaction function creates new transaction
 // If the brand is not in the list of item brands
 // The function adds it to the item brands slice

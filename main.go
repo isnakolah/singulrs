@@ -14,4 +14,5 @@ func main() {
 
 	fmt.Println(shoe.Brands)
 	fmt.Println(trans1.ItemBrand, trans2.ItemBrand, trans3.ItemBrand)
+
 }
