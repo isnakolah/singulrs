@@ -39,6 +39,15 @@ func TestInvalidNameNewItem(t *testing.T) {
 	}
 }
 
+func TestInvalidUnitNewItem(t *testing.T) {
+	// Test for an invalid unit name, empty string, should return an error
+	sugar, err := NewItem("sugar", map[string]float64{"Kabras": 110}, "")
+
+	if sugar.Measure != "" || err == nil {
+		t.Errorf(utils.SimpleErrorMessage("Invalid unit, error not raised"))
+	}
+}
+
 func TestValidAddBrand(t *testing.T) {
 	// Test for adding a valid brand
 	sugar, _ := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
