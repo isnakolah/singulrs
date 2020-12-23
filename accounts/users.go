@@ -27,7 +27,7 @@ func (user *User) AddDetails(firstName, lastName string, age uint) {
 // NewUser to create a new User
 func NewUser(firstName, lastName string, age uint, balance float64) (user *User, err error) {
 	if age >= 18 {
-		user, err = &User{}, nil
+		user = &User{}
 		user.AddDetails(firstName, lastName, age)
 
 		if balance >= 0 {
