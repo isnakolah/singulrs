@@ -28,7 +28,7 @@ func (item *Item) AddBrand(brands map[string]float64) {
 	}
 }
 
-// #TODO Get the unit of a good from the web
+// #TODO Get the unit of an item from the web
 
 // NewItem function creates a new item
 func NewItem(name string, brands map[string]float64, unit string) (item *Item, err error) {
