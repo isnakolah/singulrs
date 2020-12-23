@@ -14,7 +14,7 @@ func TestNewItem(t *testing.T) {
 		)
 	}
 
-	if len(sugar.Brands) == 2 {
+	if len(sugar.Brands) != 2 {
 		t.Error(
 			"\n-> Brands of item not added.",
 			"\n-> For len(Brands)",
