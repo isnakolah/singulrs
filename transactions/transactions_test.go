@@ -99,6 +99,6 @@ func TestInvalidAmountNewTransaction(t *testing.T) {
 	firstPurchase, _, _ := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 0)
 
 	if firstPurchase != nil {
-		t.Errorf("Invalid purchase not caught, error not raised")
+		t.Errorf(utils.SimpleErrorMessage("Invalid purchase not caught, error not raised"))
 	}
 }
