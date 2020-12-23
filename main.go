@@ -15,4 +15,8 @@ func main() {
 
 	// fmt.Println(daniel, err)
 	fmt.Println(sugar, itemErr)
+
+	var good bool
+
+	fmt.Println(good)
 }
