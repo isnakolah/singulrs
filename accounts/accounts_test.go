@@ -42,7 +42,6 @@ func TestNewUser(t *testing.T) {
 func TestDeposit(t *testing.T) {
 	// Test for a valid deposit
 	jane, err := NewUser("Jane", "Doe", 18, 1000)
-
 	jane.Deposit(1000)
 
 	if jane.Acc.Balance != 2000 || err != nil {
@@ -65,7 +64,6 @@ func TestWithdraw(t *testing.T) {
 
 	// Test for invalid withdrawal
 	jane, err := NewUser("Jane", "Doe", 18, 1000)
-
 	jane.Withdraw(2000)
 
 	if jane.Acc.Balance != 1000 || err != nil {
