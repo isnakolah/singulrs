@@ -68,10 +68,9 @@ func TestWithdraw(t *testing.T) {
 
 	jane.Withdraw(2000)
 
-	if jane.Acc.Balance != 1000 || err == nil {
+	if jane.Acc.Balance != 1000 || err != nil {
 		t.Errorf(ErrorMessage(
 			"Invalid withdrawal, error not raised", "Account Balance", float64(1000), jane.Acc.Balance,
 		))
 	}
-
 }
