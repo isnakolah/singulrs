@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestNewUser(t *testing.T) {
+func TestValidNewUser(t *testing.T) {
 	// Test for a valid input
 	daniel, err := NewUser("Daniel", "Nakolah", 20, -1000)
 
@@ -14,6 +14,8 @@ func TestNewUser(t *testing.T) {
 			"Valid deposit not successful", "Account Balance", float64(1000), daniel.Acc.Balance,
 		))
 	}
+}
+func TestInvalidAccountBalanceNewUser(t *testing.T) {
 
 	// Test for an invalid account balance
 	jane, err := NewUser("Jane", "Doe", 18, -1234)
@@ -23,16 +25,18 @@ func TestNewUser(t *testing.T) {
 			"Invalid deposit, error not raised", "Account Balance", float64(0), jane.Acc.Balance,
 		))
 	}
+}
+
+func TestInvalidAgeNewUser(t *testing.T) {
 
 	// Test for an invalid age
-	john, err := NewUser("John", "Doe", 17, 1000)
+	john, _ := NewUser("John", "Doe", 17, 1000)
 
-	if err == nil {
+	if john != nil {
 		t.Errorf(utils.ErrorMessage(
 			"Invalid age, error not raised", "Age", float64(0), float64(john.Age),
 		))
 	}
-
 }
 
 func TestDeposit(t *testing.T) {
