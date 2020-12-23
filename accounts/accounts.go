@@ -12,19 +12,23 @@ type Accounts struct {
 }
 
 // Deposit adds to the account balance
-func (user *User) Deposit(amount float64) {
-	user.Acc.Balance += amount
+func (user *User) Deposit(amount float64) (err error) {
+	if amount > 0 {
+		user.Acc.Balance += amount
+		return
+	}
+	err = errors.New("invalid deposit, must be greater than 0")
 }
 
 // Withdraw function deducts from your account
 // Only when the balance is more than the value to be withdrawn
-func (user *User) Withdraw(amount float64) error {
+func (user *User) Withdraw(amount float64) (err error) {
 	if user.Acc.Balance-amount < 0 {
-		err := errors.New("invalid withdrawal, cannot withdraw amount greater than account balance")
-		return err
+		err = errors.New("invalid withdrawal, cannot withdraw amount greater than account balance")
+		return
 	}
 	user.Acc.Balance -= amount
-	return nil
+	return
 }
 
 // AccNumber function creates a random number as the account number
