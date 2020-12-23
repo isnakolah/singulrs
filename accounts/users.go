@@ -30,18 +30,19 @@ func NewUser(firstName, lastName string, age uint, balance float64) (user *User,
 	if !utils.CheckString(firstName) || !utils.CheckString(lastName) {
 		err = errors.New("invalid name, cannot be a blank string")
 		return
-	} else if age >= 18 {
-		user = &User{}
-		user.AddDetails(firstName, lastName, age)
-
-		if balance >= 0 {
-			user.Acc.Balance = balance
-		} else {
-			err = errors.New("invalid account balance, should be greater than 0")
-			user.Acc.Balance = 0
-		}
+	} else if age < 18 {
+		err = errors.New("invalid age, should be 18 years or older")
 		return
 	}
-	err = errors.New("invalid age, should be 18 years or older")
+
+	user = &User{}
+	user.AddDetails(firstName, lastName, age)
+
+	if balance >= 0 {
+		user.Acc.Balance = balance
+	} else {
+		err = errors.New("invalid account balance, should be greater than 0")
+		user.Acc.Balance = 0
+	}
 	return
 }

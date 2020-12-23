@@ -1,22 +1,16 @@
 package main
 
 import (
-	"bankGolang/transactions"
+	"bankGolang/accounts"
 	"fmt"
 )
 
 func main() {
-	sugar, itemErr := transactions.NewItem("", map[string]float64{"Kabras": 110, "Mumias": 130}, "")
-	// transaction1, _, err := transactions.NewTransaction(sugar, map[string]float64{"Kabras": 110}, 1)
-	// fmt.Println(transaction1, err)
-	// fmt.Printf("%T", sugar.Brands)
+	daniel, _ := accounts.NewUser("Daniel", "Nakolah", 20, 3000)
 
-	// daniel, err := accounts.NewUser("Daniel", "Nakolah", 2, 1000)
+	withdraw := daniel.Withdraw
+	if withdraw(30000) != nil {
+		fmt.Println(withdraw(30000), daniel.Acc.Balance)
+	}
 
-	// fmt.Println(daniel, err)
-	fmt.Println(sugar, itemErr)
-
-	var good bool
-
-	fmt.Println(good)
 }
