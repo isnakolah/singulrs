@@ -6,11 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// PingGet returns the statuscode of OK and JSON response of a map
-func PingGet() gin.HandlerFunc {
+// HealthGet returns the statuscode of OK and JSON response of a map
+func HealthGet() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.JSON(http.StatusOK, map[string]string{
-			"hello": "Found me",
+			"health": "OK",
 		})
 	}
 }
