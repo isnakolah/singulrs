@@ -1,5 +1,5 @@
 dev:
-	go run main.go
+	go run httpd/main.go
 
 test:
 	go test -cover ./... -count=1
