@@ -11,6 +11,7 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/healthz", handler.HealthGet())
+	r.GET("/item", handler.ItemGet())
 
 	r.Run()
 }
