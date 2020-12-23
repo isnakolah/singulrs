@@ -51,9 +51,9 @@ func TestDeposit(t *testing.T) {
 	}
 }
 
-func TestWithdraw(t *testing.T) {
+func TestValidWithdraw(t *testing.T) {
 	// Test for valid withdrawal
-	john, err := NewUser("John", "Doe", 23, 1000)
+	john, _ := NewUser("John", "Doe", 23, 1000)
 	john.Withdraw(500)
 
 	if john.Acc.Balance != 500 {
@@ -61,6 +61,9 @@ func TestWithdraw(t *testing.T) {
 			"Valid withdrawal not successful", "Account Balance", float64(500), john.Acc.Balance,
 		))
 	}
+
+}
+func TestInvalidWithdraw(t *testing.T) {
 
 	// Test for invalid withdrawal
 	jane, err := NewUser("Jane", "Doe", 18, 1000)

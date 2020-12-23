@@ -78,15 +78,19 @@ func TestValidNewTransaction(t *testing.T) {
 			"Invalid number of brands", "Number of Brands", float64(2), float64(len(sugar.Brands)),
 		))
 	}
+}
 
-	// Test for adding a purchase with a new brand
-	secondPurchase, message, err := NewTransaction(sugar, map[string]float64{"Nzoia": 200}, 1)
+func TestValidTransactionAutoAddBrand(t *testing.T) {
+	// Test for a valid transaction whose brand isn't in the list of brands of the item
+	sugar, _ := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
+	purchase, message, err := NewTransaction(sugar, map[string]float64{"Nzoia": 200}, 1)
 
-	if len(sugar.Brands) != 3 || len(secondPurchase.Item.Brands) != 3 || message == "" || err != nil {
+	if len(sugar.Brands) != 3 || len(purchase.Item.Brands) != 3 || message == "" || err != nil {
 		t.Errorf(utils.ErrorMessage(
-			"None existing brand not added", "Brand length", float64(3), float64(len(secondPurchase.Item.Brands)),
+			"None existing brand not added", "Brand length", float64(3), float64(len(purchase.Item.Brands)),
 		))
 	}
+
 }
 
 func TestInvalidAmountNewTransaction(t *testing.T) {
