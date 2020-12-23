@@ -39,9 +39,9 @@ func TestAddValidBrand(t *testing.T) {
 func TestNewValidTransaction(t *testing.T) {
 	// Test for adding a valid transaction
 	sugar := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
-	firstPurchase, _, _ := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 3)
+	firstPurchase, message, err := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 3)
 
-	if firstPurchase.Amount != 3 {
+	if firstPurchase.Amount != 3 || err != nil || message != "" {
 		t.Errorf(utils.ErrorMessage(
 			"Valid Transaction not successful", "Amount", float64(3), float64(firstPurchase.Amount),
 		))
@@ -56,9 +56,9 @@ func TestNewValidTransaction(t *testing.T) {
 	}
 
 	// Test for adding a purchase with a new brand
-	secondPurchase, _, _ := NewTransaction(sugar, map[string]float64{"Nzoia": 200}, 1)
+	secondPurchase, message, err := NewTransaction(sugar, map[string]float64{"Nzoia": 200}, 1)
 
-	if len(sugar.Brands) != 3 || len(secondPurchase.Item.Brands) != 3 {
+	if len(sugar.Brands) != 3 || len(secondPurchase.Item.Brands) != 3 || message == "" || err != nil {
 		t.Errorf(utils.ErrorMessage(
 			"None existing brand not added", "Brand length", float64(3), float64(len(secondPurchase.Item.Brands)),
 		))
