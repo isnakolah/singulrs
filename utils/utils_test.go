@@ -33,7 +33,16 @@ var tests = []testpair{
 func TestErrorMessages(t *testing.T) {
 	for _, pair := range tests {
 		if pair.funcErrMessage != pair.actualErrMessage {
-			t.Error("Error message function not working")
+			t.Error("ErrorMessage function not working properly.")
 		}
+	}
+}
+
+func TestSimpleErrorMessages(t *testing.T) {
+	message := "Test simple error message."
+	expectedMessage := fmt.Sprintf("\n\n-> %s.\n\n", message)
+	actualMessage := SimpleErrorMessage(message)
+	if expectedMessage != actualMessage {
+		t.Error("SimpleErrorMessage function not working properly.")
 	}
 }
