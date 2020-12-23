@@ -18,6 +18,7 @@ func (user *User) Deposit(amount float64) (err error) {
 		return
 	}
 	err = errors.New("invalid deposit, must be greater than 0")
+	return
 }
 
 // Withdraw function deducts from your account
