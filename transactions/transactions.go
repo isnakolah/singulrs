@@ -41,6 +41,7 @@ func NewTransaction(item *Item, itemBrand map[string]float64, amount uint) (tran
 			transaction.Item.AddBrand(itemBrand)
 			message = fmt.Sprintf("%s brand created.", brandName)
 		}
+		return
 	}
 	err = errors.New("invalid amount, amount must be greater than 0")
 	return
