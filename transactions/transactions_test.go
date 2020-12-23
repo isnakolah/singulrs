@@ -7,7 +7,7 @@ import (
 
 func TestNewItem(t *testing.T) {
 	// Test on a valid new item
-	sugar := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
+	sugar := NewItem("Sugar", map[string]float64{"Kabras": 110}, "kg(s)")
 
 	for _, price := range sugar.Brands[0] {
 		if price != 110 {
@@ -17,7 +17,7 @@ func TestNewItem(t *testing.T) {
 		}
 	}
 
-	if len(sugar.Brands) != 2 {
+	if len(sugar.Brands) != 1 {
 		t.Errorf(utils.ErrorMessage(
 			"Brands of item not added.", "len(Brands)", float64(2), float64(len(sugar.Brands)),
 		))
@@ -62,5 +62,15 @@ func TestNewValidTransaction(t *testing.T) {
 		t.Errorf(utils.ErrorMessage(
 			"None existing brand not added", "Brand length", float64(3), float64(len(secondPurchase.Item.Brands)),
 		))
+	}
+}
+
+func TestNewInvalidTransaction(t *testing.T) {
+	// Test for an invalid transaction where the amount is 0
+	sugar := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
+	firstPurchase := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 0)
+
+	if firstPurchase != nil {
+		t.Errorf("Invalid purchase not caught, error not raised")
 	}
 }
