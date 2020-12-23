@@ -4,15 +4,15 @@ import "testing"
 
 func TestNewUser(t *testing.T) {
 	// Test for a valid input
-	daniel, err := NewUser("Daniel", "Nakolah", 20, 1000)
+	daniel, err := NewUser("Daniel", "Nakolah", 20, -1000)
 
-	if err != nil && daniel.Name.FirstName != "Daniel" {
+	if err != nil {
 		t.Error(
-			"-> Vaid deposit not successful\n\t\t",
-			"-> For", daniel.Acc.Balance,
+			"\n\n-> Vaid deposit not successful",
+			"For", "Account Balance",
 			"expected", 1000,
-			"got", daniel.Acc.Balance, "\n\t\t",
-			"-> Error:", err,
+			"got", daniel.Acc.Balance,
+			"\n-> Error:", err, "\n",
 		)
 	}
 
@@ -21,11 +21,11 @@ func TestNewUser(t *testing.T) {
 
 	if err == nil && jane.Acc.Balance != 0 {
 		t.Error(
-			"-> Invalid deposit, error not raised\n\t\t",
-			"-> For", jane.Acc.Balance,
+			"\n-> Invalid deposit, error not raised",
+			"\n-> For", jane.Acc.Balance,
 			"expected", 0,
-			"got", jane.Acc.Balance, "\n\t\t",
-			"-> Error:", err,
+			"got", jane.Acc.Balance,
+			"\n-> Error:", err,
 		)
 	}
 
@@ -34,11 +34,11 @@ func TestNewUser(t *testing.T) {
 
 	if err == nil && john.Name.FirstName != "" {
 		t.Error(
-			"-> Invalid age, error not raised\n\t\t",
-			"-> For", john.Age,
+			"-> Invalid age, error not raised",
+			"\n-> For", john.Age,
 			"expected", 0,
-			"got", john.Age, "\n\t\t",
-			"-> Error:", err,
+			"got", john.Age,
+			"\n-> Error:", err,
 		)
 	}
 
@@ -52,11 +52,11 @@ func TestDeposit(t *testing.T) {
 
 	if jane.Acc.Balance != 2000 {
 		t.Error(
-			"-> Valid deposit not successful\n\t\t",
-			"-> For", jane.Name.FirstName, "account",
+			"\n-> Valid deposit not successful",
+			"\n-> For", jane.Name.FirstName, "account",
 			"expected", 2000,
-			"got", jane.Acc.Balance, "\n\t\t",
-			"-> Error:", err,
+			"got", jane.Acc.Balance,
+			"\n-> Error:", err,
 		)
 	}
 }
@@ -68,8 +68,8 @@ func TestWithdraw(t *testing.T) {
 
 	if john.Acc.Balance != 500 {
 		t.Error(
-			"-> Valid withdrawal not successful\n\t\t",
-			"-> For", john.Name.FirstName, "account",
+			"\n-> Valid withdrawal not successful",
+			"\n-> For", john.Name.FirstName, "account",
 			"expected", 500,
 			"got", john.Acc.Balance,
 		)
@@ -82,11 +82,11 @@ func TestWithdraw(t *testing.T) {
 
 	if jane.Acc.Balance != 1000 && err == nil {
 		t.Error(
-			"-> Invalid withdrawal, error not raised\n\t\t",
-			"-> For", jane.Name.FirstName, "account",
+			"\n-> Invalid withdrawal, error not raised",
+			"\n-> For", jane.Name.FirstName, "account",
 			"expected", 1000,
-			"got", john.Acc.Balance, "\n\t\t",
-			"-> Error:", err,
+			"got", john.Acc.Balance,
+			"\n-> Error:", err,
 		)
 	}
 
