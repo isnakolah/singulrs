@@ -3,6 +3,7 @@ package transactions
 import (
 	"bankGolang/utils"
 	"errors"
+	"fmt"
 )
 
 // #TODO remove the item list of brands, to be just a map
@@ -22,13 +23,24 @@ type Message struct {
 // #TODO RemoveBrand()
 
 // AddBrand is a method that adds a brand to an item
-func (item *Item) AddBrand(brands map[string]float64) {
+func (item *Item) AddBrand(brands map[string]float64) (message string) {
 	if item.Brands == nil {
 		item.Brands = map[string]float64{}
 	}
 	for name, price := range brands {
-		item.Brands[name] = float64(price)
+		findBrand := func() (available bool) {
+			if _, ok := item.Brands[name]; ok {
+				available = true
+			}
+			return
+		}
+
+		if !findBrand() {
+			message = fmt.Sprintf("%s brand created.", name)
+			item.Brands[name] = float64(price)
+		}
 	}
+	return
 }
 
 // #TODO Get the unit of an item from the web
