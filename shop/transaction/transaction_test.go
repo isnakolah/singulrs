@@ -1,7 +1,7 @@
 package transaction
 
 import (
-	"bankGolang/transactions/item"
+	"bankGolang/shop/item"
 	"bankGolang/utils"
 	"testing"
 )
