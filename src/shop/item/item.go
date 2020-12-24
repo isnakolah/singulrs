@@ -20,8 +20,6 @@ type Message struct {
 	Value string `json:"value"`
 }
 
-// #TODO RemoveBrand()
-
 // AddBrand is a method that adds a brand to an item
 func (item *Item) AddBrand(brand map[string]float64) (message string) {
 	if item.Brands == nil {
@@ -36,8 +34,8 @@ func (item *Item) AddBrand(brand map[string]float64) (message string) {
 		}
 
 		if !findBrand() {
-			message = fmt.Sprintf("%s brand added.", name)
 			item.Brands[name] = float64(price)
+			message = fmt.Sprintf("%s brand added.", name)
 		}
 	}
 	return
