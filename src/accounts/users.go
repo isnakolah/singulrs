@@ -1,9 +1,11 @@
 package accounts
 
 import (
-	"singulr/src/utils/checkstring"
 	"errors"
+	"singulr/src/utils/checkstring"
 )
+
+// #TODO Use DOB to get age
 
 // User is the blueprint of the user
 type User struct {
