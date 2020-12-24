@@ -50,17 +50,11 @@ func TestInvalidUnitNewItem(t *testing.T) {
 func TestValidAddBrand(t *testing.T) {
 	// Test for adding a valid brand
 	sugar, _ := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
-	sugar.AddBrand(map[string]float64{"Nzoia": 134})
+	message := sugar.AddBrand(map[string]float64{"Nzoia": 134})
 
-	if len(sugar.Brands) != 3 {
+	if len(sugar.Brands) != 3 || message != "Nzoia brand added." {
 		t.Errorf(errmessages.ErrorMessage(
 			"Additional Brand not added.", "len(Brands)", float64(3), float64(len(sugar.Brands)),
 		))
 	}
-}
-
-func TestInitializationItemBrands(t *testing.T) {
-	sugar, _ := NewItem("Sugar", map[string]float64{"Mumias": 130}, "kg(s)")
-
-	sugar.AddBrand(map[string]float64{"Kabras": 180})
 }
