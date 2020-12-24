@@ -2,7 +2,6 @@ package transactions
 
 import (
 	"errors"
-	"fmt"
 )
 
 // Transaction struct defines the blueprint of the transaction
@@ -24,25 +23,7 @@ func NewTransaction(item *Item, itemBrand map[string]float64, amount uint) (tran
 		transaction.Amount = amount
 		transaction.ItemBrand = itemBrand
 
-		var brandName string
-		for name := range itemBrand {
-			brandName = name
-		}
-		findBrand := func() (available bool) {
-			// for _, item := range transaction.Item.Brands {
-			// 	if _, ok := item[brandName]; ok {
-			// 		available = true
-			// 	}
-			// }
-			if _, ok := transaction.Item.Brands[brandName]; ok {
-				available = true
-			}
-			return
-		}
-		if !findBrand() {
-			transaction.Item.AddBrand(itemBrand)
-			message = fmt.Sprintf("%s brand created.", brandName)
-		}
+		message = transaction.Item.AddBrand(itemBrand)
 		return
 	}
 	err = errors.New("invalid amount, amount must be greater than 0")
