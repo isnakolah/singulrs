@@ -7,14 +7,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// ItemGet returns the newsfeeds
+// ItemGet returns an item
 func ItemGet() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		sugar, err := transactions.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "")
 
 		c.JSON(
 			http.StatusOK,
-			GetData(sugar, "retrieval successful", err.Error()),
+			GetData(sugar, "", err.Error()),
 		)
 	}
 }
