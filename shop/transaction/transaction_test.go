@@ -2,7 +2,7 @@ package transaction
 
 import (
 	"bankGolang/shop/item"
-	"bankGolang/utils"
+	"bankGolang/utils/errmessages"
 	"testing"
 )
 
@@ -12,7 +12,7 @@ func TestValidNewTransaction(t *testing.T) {
 	firstPurchase, message, err := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 3)
 
 	if firstPurchase.Amount != 3 || err != nil || message != "" {
-		t.Errorf(utils.ErrorMessage(
+		t.Errorf(errmessages.ErrorMessage(
 			"Valid Transaction not successful", "Amount", float64(3), float64(firstPurchase.Amount),
 		))
 	}
@@ -20,7 +20,7 @@ func TestValidNewTransaction(t *testing.T) {
 	// Test for number of brands in the sugar item
 	// NOTE: No new item created
 	if len(sugar.Brands) != 2 || len(firstPurchase.Item.Brands) != 2 {
-		t.Errorf(utils.ErrorMessage(
+		t.Errorf(errmessages.ErrorMessage(
 			"Invalid number of brands", "Number of Brands", float64(2), float64(len(sugar.Brands)),
 		))
 	}
@@ -32,7 +32,7 @@ func TestValidTransactionAutoAddBrand(t *testing.T) {
 	purchase, message, err := NewTransaction(sugar, map[string]float64{"Nzoia": 200}, 1)
 
 	if len(sugar.Brands) != 3 || len(purchase.Item.Brands) != 3 || message == "" || err != nil {
-		t.Errorf(utils.ErrorMessage(
+		t.Errorf(errmessages.ErrorMessage(
 			"None existing brand not added", "Brand length", float64(3), float64(len(purchase.Item.Brands)),
 		))
 	}
@@ -45,6 +45,6 @@ func TestInvalidAmountNewTransaction(t *testing.T) {
 	firstPurchase, _, _ := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 0)
 
 	if firstPurchase != nil {
-		t.Errorf(utils.SimpleErrorMessage("Invalid purchase not caught, error not raised"))
+		t.Errorf(errmessages.SimpleErrorMessage("Invalid purchase not caught, error not raised"))
 	}
 }
