@@ -28,8 +28,8 @@ func (user *User) AddDetails(firstName, lastName string, age uint) {
 	user.Acc.Number = bank.AccNumber()
 }
 
-// NewUser to create a new User
-func NewUser(firstName, lastName string, age uint, balance float64) (user *User, err error) {
+// New to create a new User
+func New(firstName, lastName string, age uint, balance float64) (user *User, err error) {
 	if !checkstring.CheckString(firstName) || !checkstring.CheckString(lastName) {
 		err = errors.New("invalid name, cannot be a blank string")
 		return
