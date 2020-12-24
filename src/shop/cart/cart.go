@@ -24,7 +24,7 @@ func (cart *Cart) Add(items []*transaction.Transaction) (err error) {
 }
 
 // New creates a new transaction
-func New(items ...*transaction.Transaction) (cart Cart) {
-	cart.Add(items)
+func New(items ...*transaction.Transaction) (cart Cart, err error) {
+	err = cart.Add(items)
 	return
 }
