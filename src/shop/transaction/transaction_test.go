@@ -6,10 +6,10 @@ import (
 	"testing"
 )
 
-func TestValidNewTransaction(t *testing.T) {
+func TestValidNew(t *testing.T) {
 	// Test for adding a valid transaction
 	sugar, _ := item.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
-	firstPurchase, message, err := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 3)
+	firstPurchase, message, err := New(sugar, map[string]float64{"Kabras": 110}, 3)
 
 	if firstPurchase.Amount != 3 || err != nil || message != "" {
 		t.Errorf(errmessages.ErrorMessage(
@@ -29,7 +29,7 @@ func TestValidNewTransaction(t *testing.T) {
 func TestValidTransactionAutoAddBrand(t *testing.T) {
 	// Test for a valid transaction whose brand isn't in the list of brands of the item
 	sugar, _ := item.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
-	purchase, message, err := NewTransaction(sugar, map[string]float64{"Nzoia": 200}, 1)
+	purchase, message, err := New(sugar, map[string]float64{"Nzoia": 200}, 1)
 
 	if len(sugar.Brands) != 3 || len(purchase.Item.Brands) != 3 || message == "" || err != nil {
 		t.Errorf(errmessages.ErrorMessage(
@@ -39,10 +39,10 @@ func TestValidTransactionAutoAddBrand(t *testing.T) {
 
 }
 
-func TestInvalidAmountNewTransaction(t *testing.T) {
+func TestInvalidAmountNew(t *testing.T) {
 	// Test for an invalid transaction where the amount is 0
 	sugar, _ := item.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
-	firstPurchase, _, _ := NewTransaction(sugar, map[string]float64{"Kabras": 110}, 0)
+	firstPurchase, _, _ := New(sugar, map[string]float64{"Kabras": 110}, 0)
 
 	if firstPurchase != nil {
 		t.Errorf(errmessages.SimpleErrorMessage("Invalid purchase not caught, error not raised"))

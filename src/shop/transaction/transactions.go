@@ -1,8 +1,8 @@
 package transaction
 
 import (
-	"singulr/src/shop/item"
 	"errors"
+	"singulr/src/shop/item"
 )
 
 // Transaction struct defines the blueprint of the transaction
@@ -14,10 +14,10 @@ type Transaction struct {
 
 // #TODO Get item to be used in transaction
 
-// NewTransaction function creates new transaction
+// New function creates new transaction
 // If the brand is not in the list of item brands
 // The function adds it to the item brands slice
-func NewTransaction(item *item.Item, itemBrand map[string]float64, amount uint) (transaction *Transaction, message string, err error) {
+func New(item *item.Item, itemBrand map[string]float64, amount uint) (transaction *Transaction, message string, err error) {
 	if amount > 0 {
 		transaction = &Transaction{}
 		transaction.Item = item

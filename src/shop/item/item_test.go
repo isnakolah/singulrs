@@ -58,3 +58,24 @@ func TestValidAddBrand(t *testing.T) {
 		))
 	}
 }
+
+func TestNilAddBrand(t *testing.T) {
+	// Test for adding a brand to a nil brand map
+	sugar, err := NewItem("Sugar", nil, "kg(s)")
+	if len(sugar.Brands) != 0 || err != nil {
+		t.Errorf(errmessages.ErrorMessage(
+			"Brand not initialized.", "len(Brands)", float64(0), float64(len(sugar.Brands)),
+		))
+	}
+}
+
+func TestTransactionAddBrand(t *testing.T) {
+	sugar, _ := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
+	// purchase := transaction.New(sugar, map[string]float64{"Kabras": 110}, 3)
+
+	if len(sugar.Brands) != 2 {
+		t.Errorf(errmessages.ErrorMessage(
+			"Brand not added from transaction", "len(Brands)", float64(2), float64(len(sugar.Brands)),
+		))
+	}
+}
