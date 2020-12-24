@@ -1,7 +1,7 @@
 package itemhandler
 
 import (
-	"bankGolang/transactions"
+	"bankGolang/shop/item"
 
 	"github.com/gin-gonic/gin"
 )
@@ -15,7 +15,7 @@ import (
 // PostItem function handles posting of an item
 func PostItem() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		requestBody := transactions.Item{}
-        c.Bind(&requestBody)
+		requestBody := item.Item{}
+		c.Bind(&requestBody)
 	}
 }
