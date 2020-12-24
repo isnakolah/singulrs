@@ -10,8 +10,8 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/healthz", handler.Healthz())
-	r.GET("/item", handler.ItemGet())
-	r.GET("/transaction", handler.TransactionGet())
+	r.GET("/item", itemhandler.Get())
+	r.GET("/transaction", transactionhandler.Get())
 
 	r.Run()
 }
