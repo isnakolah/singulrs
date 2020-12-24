@@ -1,7 +1,7 @@
 package accounts
 
 import (
-	"bankGolang/utils"
+	"bankGolang/utils/checkstring"
 	"errors"
 )
 
@@ -27,7 +27,7 @@ func (user *User) AddDetails(firstName, lastName string, age uint) {
 
 // NewUser to create a new User
 func NewUser(firstName, lastName string, age uint, balance float64) (user *User, err error) {
-	if !utils.CheckString(firstName) || !utils.CheckString(lastName) {
+	if !checkstring.CheckString(firstName) || !checkstring.CheckString(lastName) {
 		err = errors.New("invalid name, cannot be a blank string")
 		return
 	} else if age < 18 {
