@@ -1,7 +1,7 @@
 package transaction
 
 import (
-	"bankGolang/shop/item"
+	"bankGolang/src/shop/item"
 	"errors"
 )
 

@@ -1,9 +1,9 @@
 package transactionhandler
 
 import (
-	"bankGolang/shop/item"
-	"bankGolang/shop/transaction"
-	"bankGolang/utils/responseerr"
+	"bankGolang/src/shop/item"
+	"bankGolang/src/shop/transaction"
+	"bankGolang/src/utils/responseerr"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

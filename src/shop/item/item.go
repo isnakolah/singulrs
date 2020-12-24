@@ -1,7 +1,7 @@
 package item
 
 import (
-	"bankGolang/utils/checkstring"
+	"bankGolang/src/utils/checkstring"
 	"errors"
 	"fmt"
 )

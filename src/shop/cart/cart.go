@@ -1,6 +1,6 @@
 package cart
 
-import "bankGolang/shop/transaction"
+import "bankGolang/src/shop/transaction"
 
 type cart struct {
 	Items []transaction.Transaction `json:"items"`

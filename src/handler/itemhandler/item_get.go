@@ -1,8 +1,8 @@
 package itemhandler
 
 import (
-	"bankGolang/shop/item"
-	"bankGolang/utils/responseerr"
+	"bankGolang/src/shop/item"
+	"bankGolang/src/utils/responseerr"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

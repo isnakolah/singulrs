@@ -1,7 +1,7 @@
 package item
 
 import (
-	"bankGolang/utils/errmessages"
+	"bankGolang/src/utils/errmessages"
 	"testing"
 )
 

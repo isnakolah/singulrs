@@ -1,7 +1,7 @@
 package itemhandler
 
 import (
-	"bankGolang/shop/item"
+	"bankGolang/src/shop/item"
 
 	"github.com/gin-gonic/gin"
 )

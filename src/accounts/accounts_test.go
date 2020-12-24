@@ -1,7 +1,7 @@
 package accounts
 
 import (
-	"bankGolang/utils/errmessages"
+	"bankGolang/src/utils/errmessages"
 	"testing"
 )
 
