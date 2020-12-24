@@ -20,8 +20,8 @@ type GetResponse struct {
 	Error   string  `json:"error"`
 }
 
-// GetItem returns a transaction
-func GetItem() gin.HandlerFunc {
+// GetTransaction returns a transaction
+func GetTransaction() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		sugar, _ := transactions.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "kg(s)")
 		purchase, message, err := transactions.NewTransaction(sugar, map[string]float64{"Nzoia": 150}, 3)
