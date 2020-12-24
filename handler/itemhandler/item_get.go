@@ -1,7 +1,7 @@
 package itemhandler
 
 import (
-	"bankGolang/transactions/item"
+	"bankGolang/shop/item"
 	"bankGolang/utils"
 	"net/http"
 
