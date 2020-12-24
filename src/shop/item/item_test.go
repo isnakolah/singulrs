@@ -7,7 +7,7 @@ import (
 
 func TestValidNewItem(t *testing.T) {
 	// Test on a valid new item
-	sugar, _ := NewItem("Sugar", map[string]float64{"Kabras": 110}, "kg(s)")
+	sugar, _ := New("Sugar", map[string]float64{"Kabras": 110}, "kg(s)")
 
 	price := sugar.Brands["Kabras"]
 	if price != 110 {
@@ -25,7 +25,7 @@ func TestValidNewItem(t *testing.T) {
 
 func TestInvalidNameNewItem(t *testing.T) {
 	// Test for an invalid name, empty string. Should return nil as the item and an err message
-	sugar, err := NewItem("", map[string]float64{"Kabras": 110}, "kg(s)")
+	sugar, err := New("", map[string]float64{"Kabras": 110}, "kg(s)")
 
 	if sugar != nil || err == nil {
 		if sugar == nil {
@@ -40,7 +40,7 @@ func TestInvalidNameNewItem(t *testing.T) {
 
 func TestInvalidUnitNewItem(t *testing.T) {
 	// Test for an invalid unit name, empty string, should return an error
-	sugar, err := NewItem("sugar", map[string]float64{"Kabras": 110}, "")
+	sugar, err := New("sugar", map[string]float64{"Kabras": 110}, "")
 
 	if sugar.Unit != "" || err == nil {
 		t.Errorf(errmessages.SimpleErrorMessage("Invalid unit, error not raised"))
@@ -49,7 +49,7 @@ func TestInvalidUnitNewItem(t *testing.T) {
 
 func TestValidAddBrand(t *testing.T) {
 	// Test for adding a valid brand
-	sugar, _ := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
+	sugar, _ := New("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
 	message := sugar.AddBrand(map[string]float64{"Nzoia": 134})
 
 	if len(sugar.Brands) != 3 || message != "Nzoia brand added." {
@@ -61,7 +61,7 @@ func TestValidAddBrand(t *testing.T) {
 
 func TestNilAddBrand(t *testing.T) {
 	// Test for adding a brand to a nil brand map
-	sugar, err := NewItem("Sugar", nil, "kg(s)")
+	sugar, err := New("Sugar", nil, "kg(s)")
 	if len(sugar.Brands) != 0 || err != nil {
 		t.Errorf(errmessages.ErrorMessage(
 			"Brand not initialized.", "len(Brands)", float64(0), float64(len(sugar.Brands)),
@@ -70,7 +70,7 @@ func TestNilAddBrand(t *testing.T) {
 }
 
 func TestTransactionAddBrand(t *testing.T) {
-	sugar, _ := NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
+	sugar, _ := New("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
 	// purchase := transaction.New(sugar, map[string]float64{"Kabras": 110}, 3)
 
 	if len(sugar.Brands) != 2 {

@@ -23,7 +23,7 @@ type GetResponse struct {
 // GetItem returns an item
 func GetItem() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sugar, err := item.NewItem(
+		sugar, err := item.New(
 			"Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "",
 		)
 

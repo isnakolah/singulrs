@@ -43,8 +43,8 @@ func (item *Item) AddBrand(brand map[string]float64) (message string) {
 
 // #TODO Get the unit of an item from the web
 
-// NewItem function creates a new item
-func NewItem(name string, brands map[string]float64, unit string) (item *Item, err error) {
+// New function creates a new item
+func New(name string, brands map[string]float64, unit string) (item *Item, err error) {
 	if checkstring.CheckString(name) {
 		item = &Item{}
 		item.Name = name

@@ -24,7 +24,7 @@ type GetResponse struct {
 // GetTransaction returns a transaction
 func GetTransaction() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sugar, _ := item.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "kg(s)")
+		sugar, _ := item.New("Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "kg(s)")
 		purchase, message, err := transaction.New(sugar, map[string]float64{"Nzoia": 150}, 3)
 		c.JSON(
 			http.StatusOK,
