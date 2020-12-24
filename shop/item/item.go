@@ -1,7 +1,7 @@
 package item
 
 import (
-	"bankGolang/utils"
+	"bankGolang/utils/checkstring"
 	"errors"
 	"fmt"
 )
@@ -47,11 +47,11 @@ func (item *Item) AddBrand(brands map[string]float64) (message string) {
 
 // NewItem function creates a new item
 func NewItem(name string, brands map[string]float64, unit string) (item *Item, err error) {
-	if utils.CheckString(name) {
+	if checkstring.CheckString(name) {
 		item = &Item{}
 		item.Name = name
 		item.AddBrand(brands)
-		if utils.CheckString(unit) {
+		if checkstring.CheckString(unit) {
 			item.Measure = unit
 			return
 		}
