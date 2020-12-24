@@ -11,10 +11,10 @@ import (
 
 // GetData is a blueprint of how the transaction will be
 type GetData struct {
-	Transaction *transactions.Transaction `json:"transaction"`
+	Transaction *transaction.Transaction `json:"transaction"`
 }
 
-// GetResponse is blueprint for the response
+// GetResponse is blueprint for the esponse
 type GetResponse struct {
 	Data    GetData `json:"data"`
 	Message string  `json:"message"`
