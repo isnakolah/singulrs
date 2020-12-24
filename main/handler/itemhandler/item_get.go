@@ -10,7 +10,6 @@ import (
 
 // Data struct shapes how the data will look like
 type Data struct {
-	// Item map[string]map[string]float64 `json:"item"`
 	Item *transactions.Item `json:"item"`
 }
 
@@ -24,7 +23,9 @@ type GetResponse struct {
 // GetItem returns an item
 func GetItem() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sugar, err := transactions.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "")
+		sugar, err := transactions.NewItem(
+			"Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "",
+		)
 
 		c.JSON(
 			http.StatusOK,
