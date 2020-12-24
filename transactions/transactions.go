@@ -29,10 +29,13 @@ func NewTransaction(item *Item, itemBrand map[string]float64, amount uint) (tran
 			brandName = name
 		}
 		findBrand := func() (available bool) {
-			for _, item := range transaction.Item.Brands {
-				if _, ok := item[brandName]; ok {
-					available = true
-				}
+			// for _, item := range transaction.Item.Brands {
+			// 	if _, ok := item[brandName]; ok {
+			// 		available = true
+			// 	}
+			// }
+			if _, ok := transaction.Item.Brands[brandName]; ok {
+				available = true
 			}
 			return
 		}

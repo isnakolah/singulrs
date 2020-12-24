@@ -9,12 +9,11 @@ func TestValidNewItem(t *testing.T) {
 	// Test on a valid new item
 	sugar, _ := NewItem("Sugar", map[string]float64{"Kabras": 110}, "kg(s)")
 
-	for _, price := range sugar.Brands[0] {
-		if price != 110 {
-			t.Errorf(utils.ErrorMessage(
-				"Valid item not captured", "Brand Price", float64(110), price,
-			))
-		}
+	price := sugar.Brands["Kabras"]
+	if price != 110 {
+		t.Errorf(utils.ErrorMessage(
+			"Valid item not captured", "Brand Price", float64(110), price,
+		))
 	}
 
 	if len(sugar.Brands) != 1 {
@@ -33,7 +32,7 @@ func TestInvalidNameNewItem(t *testing.T) {
 			t.Errorf(utils.SimpleErrorMessage("Item is nil"))
 		} else {
 			t.Errorf(utils.ErrorMessage(
-				"Invalid name, error not raised", "Item", float64(0), float64(sugar.Brands[0]["Kabras"]),
+				"Invalid name, error not raised", "Item", float64(0), float64(sugar.Brands["Kabras"]),
 			))
 		}
 	}
