@@ -10,7 +10,7 @@ func main() {
 	// account, err := accounts.NewUser("Test", "Account", 20, 2000)
 	r := gin.Default()
 
-	r.GET("/healthz", handler.HealthGet())
+	r.GET("/healthz", handler.Healthz())
 	r.GET("/item", handler.ItemGet())
 
 	r.Run()

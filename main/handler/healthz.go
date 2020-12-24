@@ -7,7 +7,7 @@ import (
 )
 
 // HealthGet returns the statuscode of OK and JSON response of a map
-func HealthGet() gin.HandlerFunc {
+func Healthz() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.JSON(http.StatusOK, map[string]string{
 			"health": "OK",
