@@ -1,7 +1,8 @@
-package transaction
+package transactionhandler
 
 import (
 	"bankGolang/transactions"
+	"bankGolang/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -26,7 +27,7 @@ func GetItem() gin.HandlerFunc {
 		purchase, message, err := transactions.NewTransaction(sugar, map[string]float64{"Nzoia": 150}, 3)
 		c.JSON(
 			http.StatusOK,
-			GetResponse{GetData{purchase}, message, err.Error()},
+			GetResponse{GetData{purchase}, message, utils.GetStrErr(err)},
 		)
 	}
 }
