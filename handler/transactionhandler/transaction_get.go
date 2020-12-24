@@ -1,7 +1,8 @@
 package transactionhandler
 
 import (
-	"bankGolang/transactions"
+	"bankGolang/shop/item"
+	"bankGolang/shop/transaction"
 	"bankGolang/utils"
 	"net/http"
 
@@ -23,8 +24,8 @@ type GetResponse struct {
 // GetTransaction returns a transaction
 func GetTransaction() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sugar, _ := transactions.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "kg(s)")
-		purchase, message, err := transactions.NewTransaction(sugar, map[string]float64{"Nzoia": 150}, 3)
+		sugar, _ := item.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "kg(s)")
+		purchase, message, err := transaction.NewTransaction(sugar, map[string]float64{"Nzoia": 150}, 3)
 		c.JSON(
 			http.StatusOK,
 			GetResponse{GetData{purchase}, message, utils.GetStrErr(err)},
