@@ -1,7 +1,6 @@
 package cart
 
 import (
-	"errors"
 	"singulr/src/shop/transaction"
 )
 
@@ -12,11 +11,6 @@ type Cart struct {
 
 // Add method adds items to Items list
 func (cart *Cart) Add(items []*transaction.Transaction) (err error) {
-	if items == nil {
-		cart.Items = nil
-		err = errors.New("no new items entered")
-		return
-	}
 	for _, item := range items {
 		cart.Items = append(cart.Items, item)
 	}
