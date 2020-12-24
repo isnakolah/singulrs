@@ -1,7 +1,8 @@
-package accounts
+package account
 
 import (
 	"errors"
+	"singulr/src/bank"
 	"singulr/src/utils/checkstring"
 )
 
@@ -24,7 +25,7 @@ func (user *User) AddDetails(firstName, lastName string, age uint) {
 	user.Name.FirstName = firstName
 	user.Name.LastName = lastName
 	user.Age = age
-	user.Acc.Number = AccNumber()
+	user.Acc.Number = bank.AccNumber()
 }
 
 // NewUser to create a new User
