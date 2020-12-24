@@ -29,7 +29,7 @@ func TestInvalidNameNewItem(t *testing.T) {
 
 	if sugar != nil || err == nil {
 		if sugar == nil {
-			t.Errorf(errmessages.SimpleErrorMessage("Item is nil"))
+			t.Errorf(errmessages.SimpleErrorMessage("Item not captured, item is nil"))
 		} else {
 			t.Errorf(errmessages.ErrorMessage(
 				"Invalid name, error not raised", "Item", float64(0), float64(sugar.Brands["Kabras"]),
@@ -42,7 +42,7 @@ func TestInvalidUnitNewItem(t *testing.T) {
 	// Test for an invalid unit name, empty string, should return an error
 	sugar, err := NewItem("sugar", map[string]float64{"Kabras": 110}, "")
 
-	if sugar.Measure != "" || err == nil {
+	if sugar.Unit != "" || err == nil {
 		t.Errorf(errmessages.SimpleErrorMessage("Invalid unit, error not raised"))
 	}
 }
@@ -57,4 +57,10 @@ func TestValidAddBrand(t *testing.T) {
 			"Additional Brand not added.", "len(Brands)", float64(3), float64(len(sugar.Brands)),
 		))
 	}
+}
+
+func TestInitializationItemBrands(t *testing.T) {
+	sugar, _ := NewItem("Sugar", map[string]float64{"Mumias": 130}, "kg(s)")
+
+	sugar.AddBrand(map[string]float64{"Kabras": 180})
 }

@@ -9,7 +9,7 @@ import (
 // type itemPostRequest struct {
 // 	Name    string
 // 	Brands  map[string]int
-// 	Measure string
+// 	Unit string
 // }
 
 // PostItem function handles posting of an item
