@@ -36,7 +36,7 @@ func (item *Item) AddBrand(brands map[string]float64) (message string) {
 		}
 
 		if !findBrand() {
-			message = fmt.Sprintf("%s brand created.", name)
+			message = fmt.Sprintf("%s brand added.", name)
 			item.Brands[name] = float64(price)
 		}
 	}
