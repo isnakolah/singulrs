@@ -2,7 +2,7 @@ package itemhandler
 
 import (
 	"bankGolang/shop/item"
-	"bankGolang/utils"
+	"bankGolang/utils/responseerr"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -29,7 +29,7 @@ func GetItem() gin.HandlerFunc {
 
 		c.JSON(
 			http.StatusOK,
-			GetResponse{Data{sugar}, "", utils.GetStrErr(err)},
+			GetResponse{Data{sugar}, "", responseerr.GetStrErr(err)},
 		)
 	}
 }
