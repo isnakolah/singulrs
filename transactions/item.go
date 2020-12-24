@@ -9,9 +9,9 @@ import (
 
 // Item struct for the item type
 type Item struct {
-	Name    string               `json:"name"`
-	Brands  []map[string]float64 `json:"brands"`
-	Measure string               `json:"measure"`
+	Name    string             `json:"name"`
+	Brands  map[string]float64 `json:"brands"`
+	Measure string             `json:"measure"`
 }
 
 // Message struct for the messages
@@ -23,8 +23,11 @@ type Message struct {
 
 // AddBrand is a method that adds a brand to an item
 func (item *Item) AddBrand(brands map[string]float64) {
+	if item.Brands == nil {
+		item.Brands = map[string]float64{}
+	}
 	for name, price := range brands {
-		item.Brands = append(item.Brands, map[string]float64{name: price})
+		item.Brands[name] = float64(price)
 	}
 }
 
