@@ -1,4 +1,4 @@
-package utils
+package errmessages
 
 import "fmt"
 
