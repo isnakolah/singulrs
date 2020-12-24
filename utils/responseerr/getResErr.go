@@ -1,4 +1,4 @@
-package utils
+package responseerr
 
 // GetStrErr returns the string of an err or "", nil
 func GetStrErr(err error) (errMessage string) {
