@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestValidNew(t *testing.T) {
+func TestValidNewTransaction(t *testing.T) {
 	// Test for adding a valid transaction
 	sugar, _ := item.New("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
 	firstPurchase, message, err := New(sugar, map[string]float64{"Kabras": 110}, 3)
@@ -39,7 +39,7 @@ func TestValidTransactionAutoAddBrand(t *testing.T) {
 
 }
 
-func TestInvalidAmountNew(t *testing.T) {
+func TestInvalidAmountNewTransaction(t *testing.T) {
 	// Test for an invalid transaction where the amount is 0
 	sugar, _ := item.New("Sugar", map[string]float64{"Kabras": 110, "Mumias": 130}, "kg(s)")
 	firstPurchase, _, _ := New(sugar, map[string]float64{"Kabras": 110}, 0)
