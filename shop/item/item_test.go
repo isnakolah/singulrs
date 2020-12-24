@@ -1,7 +1,7 @@
 package item
 
 import (
-	"bankGolang/utils"
+	"bankGolang/utils/errmessages"
 	"testing"
 )
 
@@ -11,13 +11,13 @@ func TestValidNewItem(t *testing.T) {
 
 	price := sugar.Brands["Kabras"]
 	if price != 110 {
-		t.Errorf(utils.ErrorMessage(
+		t.Errorf(errmessages.ErrorMessage(
 			"Valid item not captured", "Brand Price", float64(110), price,
 		))
 	}
 
 	if len(sugar.Brands) != 1 {
-		t.Errorf(utils.ErrorMessage(
+		t.Errorf(errmessages.ErrorMessage(
 			"Brands of item not added.", "len(Brands)", float64(2), float64(len(sugar.Brands)),
 		))
 	}
@@ -29,9 +29,9 @@ func TestInvalidNameNewItem(t *testing.T) {
 
 	if sugar != nil || err == nil {
 		if sugar == nil {
-			t.Errorf(utils.SimpleErrorMessage("Item is nil"))
+			t.Errorf(errmessages.SimpleErrorMessage("Item is nil"))
 		} else {
-			t.Errorf(utils.ErrorMessage(
+			t.Errorf(errmessages.ErrorMessage(
 				"Invalid name, error not raised", "Item", float64(0), float64(sugar.Brands["Kabras"]),
 			))
 		}
@@ -43,7 +43,7 @@ func TestInvalidUnitNewItem(t *testing.T) {
 	sugar, err := NewItem("sugar", map[string]float64{"Kabras": 110}, "")
 
 	if sugar.Measure != "" || err == nil {
-		t.Errorf(utils.SimpleErrorMessage("Invalid unit, error not raised"))
+		t.Errorf(errmessages.SimpleErrorMessage("Invalid unit, error not raised"))
 	}
 }
 
@@ -53,7 +53,7 @@ func TestValidAddBrand(t *testing.T) {
 	sugar.AddBrand(map[string]float64{"Nzoia": 134})
 
 	if len(sugar.Brands) != 3 {
-		t.Errorf(utils.ErrorMessage(
+		t.Errorf(errmessages.ErrorMessage(
 			"Additional Brand not added.", "len(Brands)", float64(3), float64(len(sugar.Brands)),
 		))
 	}
