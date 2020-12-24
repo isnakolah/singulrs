@@ -1,4 +1,4 @@
-package handler
+package transaction
 
 import (
 	"bankGolang/transactions"
@@ -7,26 +7,26 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// TransactionGetData is a blueprint of how the transaction will be
-type TransactionGetData struct {
+// GetData is a blueprint of how the transaction will be
+type GetData struct {
 	Transaction *transactions.Transaction `json:"transaction"`
 }
 
-// TransactionGetResponse is blueprint for the response
-type TransactionGetResponse struct {
-	Data    TransactionGetData `json:"data"`
-	Message string             `json:"message"`
-	Error   string             `json:"error"`
+// GetResponse is blueprint for the response
+type GetResponse struct {
+	Data    GetData `json:"data"`
+	Message string  `json:"message"`
+	Error   string  `json:"error"`
 }
 
-// TransactionGet returns a transaction
-func TransactionGet() gin.HandlerFunc {
+// GetItem returns a transaction
+func GetItem() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		sugar, _ := transactions.NewItem("Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "kg(s)")
 		purchase, message, err := transactions.NewTransaction(sugar, map[string]float64{"Nzoia": 150}, 3)
 		c.JSON(
 			http.StatusOK,
-			TransactionGetResponse{TransactionGetData{purchase}, message, err.Error()},
+			GetResponse{GetData{purchase}, message, err.Error()},
 		)
 	}
 }
