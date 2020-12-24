@@ -7,7 +7,7 @@ import (
 // Transaction struct defines the blueprint of the transaction
 type Transaction struct {
 	Item      *Item              `json:"item"`
-	ItemBrand map[string]float64 `json:"itemBrand"`
+	ItemBrand map[string]float64 `json:"brand"`
 	Amount    uint               `json:"amount"`
 }
 
