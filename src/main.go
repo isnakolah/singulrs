@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bankGolang/src/handler/healthhandler"
-	"bankGolang/src/handler/itemhandler"
-	"bankGolang/src/handler/transactionhandler"
+	"singulr/src/handler/healthhandler"
+	"singulr/src/handler/itemhandler"
+	"singulr/src/handler/transactionhandler"
 
 	"github.com/gin-gonic/gin"
 )

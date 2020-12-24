@@ -1,8 +1,8 @@
 package transaction
 
 import (
-	"bankGolang/src/shop/item"
-	"bankGolang/src/utils/errmessages"
+	"singulr/src/shop/item"
+	"singulr/src/utils/errmessages"
 	"testing"
 )
 

@@ -1,7 +1,7 @@
 package accounts
 
 import (
-	"bankGolang/src/utils/checkstring"
+	"singulr/src/utils/checkstring"
 	"errors"
 )
 
