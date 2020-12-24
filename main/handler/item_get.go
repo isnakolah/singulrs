@@ -20,14 +20,6 @@ type ItemGetResponse struct {
 	Error   string   `json:"error"`
 }
 
-// ItemGetData function returns the data
-func ItemGetData(item *transactions.Item, message, err string) (response ItemGetResponse) {
-	response.Data.Item = item
-	response.Message = message
-	response.Error = err
-	return
-}
-
 // ItemGet returns an item
 func ItemGet() gin.HandlerFunc {
 	return func(c *gin.Context) {
@@ -35,7 +27,7 @@ func ItemGet() gin.HandlerFunc {
 
 		c.JSON(
 			http.StatusOK,
-			ItemGetData(sugar, "", err.Error()),
+			ItemGetResponse{ItemData{sugar}, "", err.Error()},
 		)
 	}
 }
