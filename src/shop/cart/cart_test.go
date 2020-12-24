@@ -15,9 +15,9 @@ func TestNewCart(t *testing.T) {
 	purchase1, _, _ := transaction.New(sugar, map[string]float64{"Kabras": 110}, 2)
 	purchase2, _, _ := transaction.New(rice, map[string]float64{"Pishori": 150}, 2)
 
-	cart := cart.New(purchase1, purchase2)
+	cart, err := cart.New(purchase1, purchase2)
 
-	if len(cart.Items) != 2 {
+	if len(cart.Items) != 2 || err != nil {
 		t.Errorf(errmessages.ErrorMessage(
 			"Cart items not added", "len(cart.Items)", float64(2), float64(len(cart.Items)),
 		))
