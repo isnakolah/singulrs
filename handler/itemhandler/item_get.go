@@ -1,7 +1,7 @@
 package itemhandler
 
 import (
-	"bankGolang/transactions"
+	"bankGolang/transactions/item"
 	"bankGolang/utils"
 	"net/http"
 
@@ -10,7 +10,7 @@ import (
 
 // Data struct shapes how the data will look like
 type Data struct {
-	Item *transactions.Item `json:"item"`
+	Item *item.Item `json:"item"`
 }
 
 // GetResponse struct to define how the GET response will look like
@@ -23,7 +23,7 @@ type GetResponse struct {
 // GetItem returns an item
 func GetItem() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sugar, err := transactions.NewItem(
+		sugar, err := item.NewItem(
 			"Sugar", map[string]float64{"Kabras": 110, "Mumias": 110}, "",
 		)
 
