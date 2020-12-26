@@ -12,20 +12,12 @@ import (
 type User struct {
 	Name Names
 	Age  uint
-	Acc  Accounts
+	Acc  bank.Accounts
 }
 
 // Names shows the names of the user
 type Names struct {
 	FirstName, MiddleName, LastName string
-}
-
-// AddDetails methods adds the details to the user
-func (user *User) AddDetails(firstName, lastName string, age uint) {
-	user.Name.FirstName = firstName
-	user.Name.LastName = lastName
-	user.Age = age
-	user.Acc.Number = bank.AccNumber()
 }
 
 // New to create a new User
