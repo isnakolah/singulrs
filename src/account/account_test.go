@@ -17,7 +17,6 @@ func TestValidNewUser(t *testing.T) {
 	}
 }
 func TestInvalidAccountBalanceNewUser(t *testing.T) {
-
 	// Test for an invalid account balance
 	jane, err := account.New("Jane", "Doe", 18, -1234)
 
@@ -29,7 +28,6 @@ func TestInvalidAccountBalanceNewUser(t *testing.T) {
 }
 
 func TestInvalidAgeNewUser(t *testing.T) {
-
 	// Test for an invalid age
 	john, _ := account.New("John", "Doe", 17, 1000)
 
@@ -40,7 +38,7 @@ func TestInvalidAgeNewUser(t *testing.T) {
 	}
 }
 
-func TestDeposit(t *testing.T) {
+func TestValidDeposit(t *testing.T) {
 	// Test for a valid deposit
 	jane, err := account.New("Jane", "Doe", 18, 1000)
 	jane.Deposit(1000)
@@ -48,6 +46,18 @@ func TestDeposit(t *testing.T) {
 	if jane.Acc.Balance != 2000 || err != nil {
 		t.Errorf(errmessages.ErrorMessage(
 			"Valid deposit not successful", "Account Balance", float64(2000), jane.Acc.Balance,
+		))
+	}
+}
+
+func TestInvalidDeposit(t *testing.T) {
+	// Test for a valid deposit
+	jane, _ := account.New("Jane", "Doe", 18, 1000)
+	err := jane.Deposit(0)
+
+	if err == nil {
+		t.Errorf(errmessages.ErrorMessage(
+			"Invalid deposit, error not raised", "deposit", float64(1000), float64(jane.Acc.Balance),
 		))
 	}
 }
@@ -65,7 +75,6 @@ func TestValidWithdraw(t *testing.T) {
 
 }
 func TestInvalidWithdraw(t *testing.T) {
-
 	// Test for invalid withdrawal
 	jane, err := account.New("Jane", "Doe", 18, 1000)
 	jane.Withdraw(2000)
