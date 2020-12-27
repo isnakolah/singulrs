@@ -32,14 +32,6 @@ func (user *User) Withdraw(amount float64) (err error) {
 	return
 }
 
-// AddDetails methods adds the details to the user
-func (user *User) AddDetails(firstName, lastName string, age uint) {
-	user.Name.FirstName = firstName
-	user.Name.LastName = lastName
-	user.Age = age
-	user.Acc.Number = AccNumber()
-}
-
 // AccNumber function creates a random number as the account number
 func AccNumber() (accNumber int) {
 	accNumber = rand.Int()

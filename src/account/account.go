@@ -19,6 +19,14 @@ type Names struct {
 	FirstName, MiddleName, LastName string
 }
 
+// AddDetails methods adds the details to the user
+func (user *User) AddDetails(firstName, lastName string, age uint) {
+	user.Name.FirstName = firstName
+	user.Name.LastName = lastName
+	user.Age = age
+	user.Acc.Number = AccNumber()
+}
+
 // New to create a new User
 func New(firstName, lastName string, age uint, balance float64) (user *User, err error) {
 	if !checkstring.CheckString(firstName) || !checkstring.CheckString(lastName) {
