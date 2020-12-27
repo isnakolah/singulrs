@@ -14,10 +14,4 @@ require (
 	golang.org/x/sys v0.0.0-20201211090839-8ad439b19e0f // indirect
 	google.golang.org/protobuf v1.25.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-    github.com/getsentry/sentry-go v0.6.1
-	github.com/gin-gonic/gin v1.6.3
-	github.com/google/uuid v1.1.1
-	github.com/jinzhu/gorm v1.9.12
-	github.com/rs/cors v1.7.0
-	github.com/rs/zerolog v1.18.0
 )

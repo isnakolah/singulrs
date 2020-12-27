@@ -2,7 +2,6 @@ package account
 
 import (
 	"errors"
-	"singulr/src/bank"
 	"singulr/src/utils/checkstring"
 )
 
@@ -12,7 +11,7 @@ import (
 type User struct {
 	Name Names
 	Age  uint
-	Acc  bank.Accounts
+	Acc  Accounts
 }
 
 // Names shows the names of the user
