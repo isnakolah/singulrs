@@ -13,6 +13,7 @@ func main() {
 
 	r.GET("/healthz", healthhandler.Healthz())
 	r.GET("/item", itemhandler.GetItem())
+	r.POST("/item", itemhandler.PostItem())
 	r.GET("/transaction", transactionhandler.GetTransaction())
 
 	r.Run()
